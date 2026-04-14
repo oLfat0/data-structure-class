@@ -15,6 +15,7 @@ void imprima_estrutura(No* raiz, int nivel);
 void padding(char ch, int n);
 
 No* rotacao_direita(No* p);
+No* rotacao_esquerda(No* p);
 
 int main(){
     No* raiz = novo_no('g');
@@ -72,12 +73,38 @@ void imprima_estrutura(No* raiz, int nivel){
 }
 
 No* rotacao_direita(No* p){
-    //NÃO FINALIZADO
     /* Left-Left */
-    No* pt = (No*) malloc(sizeof(No));
-    pt = p->esq;
+    No* pt = p->esq;
 
     p->esq = pt->dir;
     pt->dir = p;
+
     return pt;
+}
+
+No* rotacao_esquerda(No* p){
+    /* Right-Right */
+    No* pt = p->dir;
+
+    p->dir = pt->esq;
+    pt->esq = p;
+
+    return pt;
+}
+
+No* rotacao_dupla_dir(No* p){
+    /* Left-Right */
+    p->esq = rotacao_esquerda(p->esq);
+    p = rotacao_direita(p);
+
+    return p;
+}
+
+No* rotacao_dupla_esq(No* p){
+    /* Right-Left */
+
+    p->dir = rotacao_direita(p->dir);
+    p = rotacao_esquerda(p);
+
+    return p;
 }
