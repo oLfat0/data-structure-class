@@ -13,8 +13,9 @@ int hash_duplo(int k, int i);
 
 int main(){
     int x = 20;
+    int a = 7, b = 11;
 
-    printf("%d mod M = %d\n", x, x%M);
+    printf("MOD Normal: %d mod %d = %d\n", a, b, a%b);
     printf("Hash Duplo de %d: Posi = %d\n", x, hash_duplo(x, 1));
     return 0;
 }
