@@ -11,7 +11,7 @@ void mostrar_arvore(No* raiz);
 No* novo_no(int n);
 // void busca_arvore(No* raiz, int x);
 No* busca_arvore(No* pt, int *f, int x);
-void insere(No* pt, int f, int x);
+void insere(No* pt, int *f, int x);
 
 int main(){
     No* raiz = novo_no(3);  
