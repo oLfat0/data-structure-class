@@ -14,7 +14,7 @@ typedef struct no{
 No* novo_no();
 No* oplus(No* t1, No* t2);
 
-No* algoritmo_huffman(int freq, int n);
+No* algoritmo_huffman(No* h[], int freq, int n);
 
 /* funcoes principais */
 void altere(No* h[], int i, int n, int k);
