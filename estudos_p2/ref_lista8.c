@@ -24,7 +24,7 @@ char de_posi_pra_digi(int p);
 void percorre(No* pt);
 
     /* Questão 5 */
-No* busca_dig(char* x, No* pt, int l, int a);
+No* busca_dig(char* x, No* pt, int* l, int* a);
 
 int main(){
     No* raiz = novo_no();
@@ -138,22 +138,20 @@ void percorre(No* pt){
     }
 }
 
-No* busca_dig(char* x, No* pt, int l, int a){
-    No* w = pt;
+No* busca_dig(char* x, No* pt, int* l, int* a){
     int k = strlen(x);
+    *a = 0;
 
-    if(pt == NULL) return NULL;
-
-    for(int i=l; i<k; i++){
-        a = 0;
-        int posi = de_digi_pra_posi(x[i]);
-
-        if(pt->filhos[posi] != NULL){
-            l++;
-            busca_dig(x, pt->filhos[posi], l, a);
-        }
-        return w;
+    if(*l == k){
+        if(pt->info == TERMINAL) *a = 1;
+        else *a = 0;
+        return pt;
     }
-    a = 1;      //x conseguiu chegar até o último valor, então se encontra por completo na árvore
-    return w;
+    int posi = de_digi_pra_posi(x[*l]);
+
+    if(pt->filhos[posi] != NULL){
+        (*l)++;
+        return busca_dig(x, pt->filhos[posi], l, a);
+    }
+    return pt;
 }
